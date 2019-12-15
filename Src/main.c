@@ -97,8 +97,6 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 
-	uint32_t y;
-
 	FATFS fs;
 	FRESULT f_result;
   /* USER CODE END 1 */
