@@ -25,20 +25,20 @@ void tarea_OLED(void)
 	uint32_t i;
 
 	ssd1306_SetCursor(36,46);
-	for(i=0;i<SIZE_OLED_DOWN_BUFFER;i++) ssd1306_WriteChar(OLED_DOWN_BUFFER[i], Font_11x18, White);
+	for(i=0;i<SIZE_OLED_DOWN_BUFFER-1;i++) ssd1306_WriteChar(OLED_DOWN_BUFFER[i], Font_11x18, White);
 
 	ssd1306_SetCursor(3, 4);
-	for(i=0;i<SIZE_OLED_UP_BUFFER;i++) ssd1306_WriteChar(OLED_UP_BUFFER[i], Font_11x18, White);
+	for(i=0;i<SIZE_OLED_UP_BUFFER-1;i++) ssd1306_WriteChar(OLED_UP_BUFFER[i], Font_11x18, White);
 
 	ssd1306_SetCursor(3, 25);
-	for(i=0;i<SIZE_OLED_LEFT_BUFFER;i++) ssd1306_WriteChar(OLED_LEFT_BUFFER[i], Font_11x18, White);
+	for(i=0;i<SIZE_OLED_LEFT_BUFFER-1;i++) ssd1306_WriteChar(OLED_LEFT_BUFFER[i], Font_11x18, White);
 	ssd1306_SetCursor(3, 48);
-	for(i=0;i<SIZE_OLED_LEFT_UNITS_BUFFER;i++) ssd1306_WriteChar(OLED_LEFT_UNITS_BUFFER[i], Font_7x10, White);
+	for(i=0;i<SIZE_OLED_LEFT_UNITS_BUFFER-1;i++) ssd1306_WriteChar(OLED_LEFT_UNITS_BUFFER[i], Font_7x10, White);
 
 	ssd1306_SetCursor(69, 25);
-	for(i=0;i<SIZE_OLED_RIGHT_BUFFER;i++) ssd1306_WriteChar(OLED_RIGHT_BUFFER[i], Font_11x18, White);
+	for(i=0;i<SIZE_OLED_RIGHT_BUFFER-1;i++) ssd1306_WriteChar(OLED_RIGHT_BUFFER[i], Font_11x18, White);
 	ssd1306_SetCursor(96,48);
-	for(i=0;i<SIZE_OLED_RIGHT_UNITS_BUFFER;i++) ssd1306_WriteChar(OLED_RIGHT_UNITS_BUFFER[i], Font_7x10, White);
+	for(i=0;i<SIZE_OLED_RIGHT_UNITS_BUFFER-1;i++) ssd1306_WriteChar(OLED_RIGHT_UNITS_BUFFER[i], Font_7x10, White);
 
 	ssd1306_UpdateScreen();
 }

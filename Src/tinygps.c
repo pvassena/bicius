@@ -223,7 +223,7 @@ bool gps_term_complete()
       if (_is_gps_data_good)
       {
 #ifndef GPS_NO_STATS
-        ++_good_sentences;
+    	  ++_good_sentences;
 #endif
         _last_time_fix = _new_time_fix;
         _last_position_fix = _new_position_fix;

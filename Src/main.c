@@ -76,8 +76,8 @@ char OLED_UP_BUFFER[SIZE_OLED_UP_BUFFER];
 char OLED_DOWN_BUFFER[SIZE_OLED_DOWN_BUFFER];
 char OLED_LEFT_BUFFER[SIZE_OLED_LEFT_BUFFER];
 char OLED_RIGHT_BUFFER[SIZE_OLED_RIGHT_BUFFER];
-char OLED_LEFT_UNITS_BUFFER[SIZE_OLED_LEFT_UNITS_BUFFER]="km/h";
-char OLED_RIGHT_UNITS_BUFFER[SIZE_OLED_RIGHT_UNITS_BUFFER]="sats";
+char OLED_LEFT_UNITS_BUFFER[SIZE_OLED_LEFT_UNITS_BUFFER];
+char OLED_RIGHT_UNITS_BUFFER[SIZE_OLED_RIGHT_UNITS_BUFFER];
 
 uint32_t milliseconds;
 uint32_t seconds;
@@ -96,9 +96,7 @@ char RETURN_BUFFER[2]="\r\n";
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
 	FATFS fs;
-	FRESULT f_result;
   /* USER CODE END 1 */
   
 
@@ -138,36 +136,9 @@ int main(void)
   DWT->CTRL |= ITM_TCR_ITMENA_Msk; // enable the counter
 
   //SD
-  if(f_mount(&fs, "", 1))
-  {
-	  OLED_LEFT_BUFFER[0]='E';
-	  OLED_LEFT_BUFFER[1]='R';
-	  OLED_LEFT_BUFFER[2]='R';
-	  OLED_LEFT_BUFFER[3]=' ';
-	  OLED_LEFT_BUFFER[4]='0';
-	  tarea_OLED();
-	  while(1);
-  }
-  f_result=f_open(&fil, "log.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE);
-  if(f_result)
-  {
-	  OLED_LEFT_BUFFER[0]='E';
-	  OLED_LEFT_BUFFER[1]='R';
-	  OLED_LEFT_BUFFER[2]='R';
-	  my_itoa_r(f_result,OLED_LEFT_BUFFER+3, 2);
-	  tarea_OLED();
-	  while(1);
-  }
-  if(f_close(&fil))
-  {
-	  OLED_LEFT_BUFFER[0]='E';
-	  OLED_LEFT_BUFFER[1]='R';
-	  OLED_LEFT_BUFFER[2]='R';
-	  OLED_LEFT_BUFFER[3]=' ';
-	  OLED_LEFT_BUFFER[4]='2';
-	  tarea_OLED();
-	  while(1);
-  }
+  if(f_mount(&fs, "", 1)) while(1);
+  if(f_open(&fil, "log.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE)) while(1);
+  if(f_close(&fil)) while(1);
 
   /* USER CODE END 2 */
 
@@ -321,7 +292,7 @@ static void MX_USART1_UART_Init(void)
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
-  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.Mode = UART_MODE_RX;
   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
   if (HAL_UART_Init(&huart1) != HAL_OK)

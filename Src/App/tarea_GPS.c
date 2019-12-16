@@ -10,6 +10,8 @@
 
 #include "tinygps.h"
 
+#define TRH 2
+
 void tarea_GPS(void)
 {
 	static uint32_t pos_old=0;
@@ -22,24 +24,24 @@ void tarea_GPS(void)
 	{
 		if(pos_now>pos_old)
 		{
-			for(i=pos_old+1;i<=pos_now;i++)
+			for(i=pos_old;i<pos_now;i++)
 			{
 				cnt+=encode((char)UART_RX_BUFFER[i]);
 			}
 		}
 		else
 		{
-			for(i=pos_old+1;i<SIZE_UART_RX_BUFFER;i++)
+			for(i=pos_old;i<SIZE_UART_RX_BUFFER;i++)
 			{
 				cnt+=encode((char)UART_RX_BUFFER[i]);
 			}
-			for(i=0;i<=pos_now;i++)
+			for(i=0;i<pos_now;i++)
 			{
 				cnt+=encode((char)UART_RX_BUFFER[i]);
 			}
 		}
+		pos_old=pos_now;
 	}
-	pos_old=pos_now;
 }
 
 

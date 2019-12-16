@@ -7,6 +7,7 @@
 #include "App/variables_globales.h"
 #include "App/tarea_MAIN.h"
 #include "tinygps.h"
+#include "printf.h"
 
 void tarea_MAIN(void)
 {
@@ -14,26 +15,20 @@ void tarea_MAIN(void)
 	//UINT br,bw;
 
 	//Up buffer
-	OLED_UP_BUFFER[0]='T';
-	OLED_UP_BUFFER[1]='=';
-	my_itoa_r(minutes,OLED_UP_BUFFER+2,2);
-	OLED_UP_BUFFER[4]=':';
-	my_itoa_r(seconds,OLED_UP_BUFFER+5,2);
-	OLED_UP_BUFFER[7]=':';
-	my_itoa_r(milliseconds,OLED_UP_BUFFER+8,3);
+	snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "T=%02d:%02d:%03d",minutes,seconds,milliseconds);
 
 	//Down buffer
 	gps_crack_datetime(NULL, NULL, NULL, &hour, &minute, NULL, NULL, NULL);
-	my_itoa_r(hour,OLED_DOWN_BUFFER+0,2);
-	OLED_DOWN_BUFFER[2]=':';
-	my_itoa_r(minute,OLED_DOWN_BUFFER+3,2);
+	snprintf_(OLED_DOWN_BUFFER, SIZE_OLED_DOWN_BUFFER, "%02d:%02d", hour, minute);
+	//snprintf_(OLED_DOWN_BUFFER, SIZE_OLED_DOWN_BUFFER, "%d", OLED_DOWN_BUFFER[0]);
 
 	//Left buffer
-	my_itoa_r((uint32_t)gps_f_speed_kmph(),OLED_LEFT_BUFFER,5);
+	snprintf_(OLED_LEFT_BUFFER, SIZE_OLED_LEFT_BUFFER, "%5f", gps_f_speed_kmph());
+	snprintf_(OLED_LEFT_UNITS_BUFFER, SIZE_OLED_LEFT_UNITS_BUFFER, "km/h");
 
 	//Right buffer
-	my_itoa_r((uint32_t)gps_satellites(),OLED_RIGHT_BUFFER,5);
-
+	snprintf_(OLED_RIGHT_BUFFER, SIZE_OLED_RIGHT_BUFFER, "DEBUG");
+	snprintf_(OLED_RIGHT_UNITS_BUFFER, SIZE_OLED_RIGHT_UNITS_BUFFER, "PEPE");
 
 //	DWT->CYCCNT = 0;
 //	if(f_open(&fil, "log.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE))

@@ -13,15 +13,15 @@
 FIL fil;
 
 //Tamaño de buffer de UART
-#define SIZE_UART_RX_BUFFER 			200
+#define SIZE_UART_RX_BUFFER 			256
 
 //Tamaños de buffers de pantalla
-#define SIZE_OLED_UP_BUFFER				11
-#define SIZE_OLED_DOWN_BUFFER			5
-#define SIZE_OLED_LEFT_BUFFER			5
-#define SIZE_OLED_RIGHT_BUFFER			5
-#define SIZE_OLED_LEFT_UNITS_BUFFER		4
-#define SIZE_OLED_RIGHT_UNITS_BUFFER	4
+#define SIZE_OLED_UP_BUFFER				12
+#define SIZE_OLED_DOWN_BUFFER			6
+#define SIZE_OLED_LEFT_BUFFER			6
+#define SIZE_OLED_RIGHT_BUFFER			6
+#define SIZE_OLED_LEFT_UNITS_BUFFER		5
+#define SIZE_OLED_RIGHT_UNITS_BUFFER	5
 
 //Buffer de uart y instancia de uart
 extern uint8_t UART_RX_BUFFER[SIZE_UART_RX_BUFFER];

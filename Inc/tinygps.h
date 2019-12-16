@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #ifndef tinygps_h
 #define tinygps_h
 
-#define GPS_NO_STATS
+//#define GPS_NO_STATS
 
 typedef char bool;
 typedef unsigned char byte;
@@ -49,7 +49,6 @@ typedef unsigned char byte;
 #define GPS_KMPH_PER_KNOT 1.852
 #define GPS_MILES_PER_METER 0.00062137112
 #define GPS_KM_PER_METER 0.001
-// #define GPS_NO_STATS
 
   enum {
     GPS_INVALID_AGE = 0xFFFFFFFF,
