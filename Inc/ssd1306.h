@@ -14,7 +14,7 @@
 #include "main.h"
 
 #ifndef SSD1306_SPI_PORT
-#define SSD1306_SPI_PORT        hspi2
+#define SSD1306_SPI_PORT        hspi1
 #endif
 
 //#ifndef SSD1306_CS_Port
@@ -25,14 +25,14 @@
 //#endif
 
 #ifndef SSD1306_DC_Port
-#define SSD1306_DC_Port         GPIOB
+#define SSD1306_DC_Port         GPIOA
 #endif
 #ifndef SSD1306_DC_Pin
 #define SSD1306_DC_Pin          OLED_DC_Pin
 #endif
 
 #ifndef SSD1306_Reset_Port
-#define SSD1306_Reset_Port      GPIOB
+#define SSD1306_Reset_Port      GPIOA
 #endif
 #ifndef SSD1306_Reset_Pin
 #define SSD1306_Reset_Pin       OLED_RES_Pin
