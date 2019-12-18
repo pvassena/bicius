@@ -7,44 +7,136 @@
 #include "App/tarea_TIMER.h"
 #include "App/variables_globales.h"
 
-#define TICK 	32//32
+#define TICK 		32//32
+#define DIGITO_ON	15
 
-extern __IO uint32_t uwTick;
+extern uint32_t uwTick;
 
 volatile uint8_t FatFsCnt = 0;
-volatile uint8_t Timer1, Timer2;
+volatile uint8_t Timer1, Timer2, Timer3;
 
 
 
 void tarea_TIMER(void)
 {
-
+	//Timers para FATFS HAL
 	if(Timer1 > 0)
 		Timer1--;
-
 	if(Timer2 > 0)
 		Timer2--;
 
-	milliseconds+=TICK;
+	//Timer dígito titilante
+	if(Timer3 > 0)
+	{
+		Timer3--;
+	}
+	else
+	{
+		Timer3=DIGITO_ON;
+	}
+	digito_on=0;
+	if(Timer3<DIGITO_ON/6)
+		digito_on=1;
 
-	if(milliseconds>=1000)
-	{
-		milliseconds-=1000;
-		seconds+=1;
+	if(user_interfaceIface_israised_rESET_TIM(&UIX)){
+		hours=0;
+		minutes=0;
+		seconds=0;
+		milliseconds=0;
 	}
-	if(seconds>=60)
+
+	if(user_interfaceIface_israised_tIM_UP(&UIX))
 	{
-		seconds-=60;
+		milliseconds+=TICK;
+		if(milliseconds>=1000)
+		{
+			milliseconds-=1000;
+			seconds++;
+			if(seconds>=60)
+			{
+				seconds-=60;
+				minutes++;
+				if(minutes>=60)
+				{
+					minutes-=60;
+					hours++;
+					if(hours>=99)
+					{
+						hours-=99;
+					}
+				}
+			}
+		}
+	}
+
+	if(user_interfaceIface_israised_tIM_DOWN(&UIX))
+	{
+		milliseconds-=TICK;
+		if(milliseconds<0)
+		{
+			milliseconds+=1000;
+			seconds--;
+			if(seconds<0)
+			{
+				seconds+=60;
+				minutes--;
+				if(minutes<0)
+				{
+					minutes+=60;
+					hours--;
+					if(hours<0)
+					{
+						hours=0;
+						minutes=0;
+						seconds=0;
+						milliseconds=0;
+						user_interfaceIface_raise_tIMEOUT(&UIX);
+					}
+				}
+			}
+		}
+	}
+
+	if(user_interfaceIface_israised_sEGUNDOS(&UIX))
+	{
+		seconds++;
+		if(seconds>=60)
+		{
+			seconds-=60;
+			minutes++;
+			if(minutes>=60)
+			{
+				minutes-=60;
+				hours++;
+				if(hours>=99)
+				{
+					hours-=99;
+				}
+			}
+		}
+	}
+
+	if(user_interfaceIface_israised_mINUTOS(&UIX))
+	{
 		minutes++;
+		if(minutes>=60)
+		{
+			minutes-=60;
+			hours++;
+			if(hours>=99)
+			{
+				hours-=99;
+			}
+		}
 	}
-	if(minutes>=60)
+
+	if(user_interfaceIface_israised_hORAS(&UIX))
 	{
-		minutes-=60;
 		hours++;
-	}
-	if(hours>=24)
-	{
-		hours-=24;
+		if(hours>=99)
+		{
+			hours-=99;
+		}
 	}
 }
 

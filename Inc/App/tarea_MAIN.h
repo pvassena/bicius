@@ -9,6 +9,7 @@
 #define APP_TAREA_MAIN_H_
 
 void tarea_MAIN(void);
-void my_itoa_r(uint32_t num, char* str,uint32_t size);
+void titilar_digito(void);
+void imprimir_timer(void);
 
 #endif /* APP_TAREA_MAIN_H_ */

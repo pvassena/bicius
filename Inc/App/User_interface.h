@@ -20,7 +20,7 @@ extern "C" {
 #endif
 /*! Define number of states in the state enum */
 
-#define USER_INTERFACE_STATE_COUNT 10
+#define USER_INTERFACE_STATE_COUNT 13
 
 /*! Define dimension of the state configuration vector for orthogonal states. */
 #define USER_INTERFACE_MAX_ORTHOGONAL_STATES 1
@@ -33,10 +33,13 @@ extern "C" {
 #define SCVI_USER_INTERFACE_MAIN_REGION_CRONOMETRO_R1_CORRIENDO 0
 #define SCVI_USER_INTERFACE_MAIN_REGION_CRONOMETRO_R1_PAUSAR 0
 #define SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA 0
-#define SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_R1_INICIALIZAR 0
-#define SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_R1_CORRIENDO 0
-#define SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_R1_PAUSAR 0
-#define SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_R1_FINALIZADO 0
+#define SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_S_INICIALIZAR 0
+#define SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_S_INICIALIZAR_R1_SEGUNDOS 0
+#define SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_S_INICIALIZAR_R1_MINUTOS 0
+#define SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_S_INICIALIZAR_R1_HORAS 0
+#define SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_S_CORRIENDO 0
+#define SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_S_PAUSAR 0
+#define SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_S_FINALIZADO 0
 
 
 
@@ -50,10 +53,13 @@ typedef enum
 	User_interface_main_region_Cronometro_r1_Corriendo,
 	User_interface_main_region_Cronometro_r1_Pausar,
 	User_interface_main_region_Cuenta_Regresiva,
-	User_interface_main_region_Cuenta_Regresiva_r1_Inicializar,
-	User_interface_main_region_Cuenta_Regresiva_r1_Corriendo,
-	User_interface_main_region_Cuenta_Regresiva_r1_Pausar,
-	User_interface_main_region_Cuenta_Regresiva_r1_Finalizado
+	User_interface_main_region_Cuenta_Regresiva_s_Inicializar,
+	User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos,
+	User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos,
+	User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas,
+	User_interface_main_region_Cuenta_Regresiva_s_Corriendo,
+	User_interface_main_region_Cuenta_Regresiva_s_Pausar,
+	User_interface_main_region_Cuenta_Regresiva_s_Finalizado
 } User_interfaceStates;
 
 /*! Type definition of the data structure for the User_interfaceIface interface scope. */
@@ -67,8 +73,9 @@ typedef struct
 	sc_boolean TIM_UP_raised;
 	sc_boolean TIM_DOWN_raised;
 	sc_boolean RESET_TIM_raised;
-	sc_boolean UPDATE_raised;
-	sc_boolean NEXT_raised;
+	sc_boolean SEGUNDOS_raised;
+	sc_boolean MINUTOS_raised;
+	sc_boolean HORAS_raised;
 	sc_integer OLED_ST;
 } User_interfaceIface;
 
@@ -126,11 +133,14 @@ extern sc_boolean user_interfaceIface_israised_tIM_DOWN(const User_interface* ha
 /*! Checks if the out event 'RESET_TIM' that is defined in the default interface scope has been raised. */ 
 extern sc_boolean user_interfaceIface_israised_rESET_TIM(const User_interface* handle);
 
-/*! Checks if the out event 'UPDATE' that is defined in the default interface scope has been raised. */ 
-extern sc_boolean user_interfaceIface_israised_uPDATE(const User_interface* handle);
+/*! Checks if the out event 'SEGUNDOS' that is defined in the default interface scope has been raised. */ 
+extern sc_boolean user_interfaceIface_israised_sEGUNDOS(const User_interface* handle);
 
-/*! Checks if the out event 'NEXT' that is defined in the default interface scope has been raised. */ 
-extern sc_boolean user_interfaceIface_israised_nEXT(const User_interface* handle);
+/*! Checks if the out event 'MINUTOS' that is defined in the default interface scope has been raised. */ 
+extern sc_boolean user_interfaceIface_israised_mINUTOS(const User_interface* handle);
+
+/*! Checks if the out event 'HORAS' that is defined in the default interface scope has been raised. */ 
+extern sc_boolean user_interfaceIface_israised_hORAS(const User_interface* handle);
 
 /*! Gets the value of the variable 'OLED_ST' that is defined in the default interface scope. */ 
 extern sc_integer user_interfaceIface_get_oLED_ST(const User_interface* handle);

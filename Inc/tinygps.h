@@ -25,7 +25,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 //#define GPS_NO_STATS
 
-typedef char bool;
 typedef unsigned char byte;
 #define false 0
 #define true 1
@@ -63,7 +62,7 @@ typedef unsigned char byte;
   };
 
   // process one character received from GPS
-  bool encode(char c);
+  char encode(char c);
 
   // lat/long in hundred thousandths of a degree and age of fix in milliseconds
   void gps_get_position(long *latitude, long *longitude, unsigned long *fix_age);
@@ -103,8 +102,8 @@ typedef unsigned char byte;
   int from_hex(char a);
   unsigned long gps_parse_decimal();
   unsigned long gps_parse_degrees();
-  bool gps_term_complete();
-  bool gpsisdigit(char c);
+  char gps_term_complete();
+  char gpsisdigit(char c);
   long gpsatol(const char *str);
   int gpsstrcmp(const char *str1, const char *str2);
 

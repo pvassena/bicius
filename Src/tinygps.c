@@ -40,12 +40,12 @@ unsigned long _last_position_fix, _new_position_fix;
 
 // parsing state variables
 byte _parity;
-bool _is_checksum_term;
+char _is_checksum_term;
 char _term[15];
 byte _sentence_type;
 byte _term_number = 0;
 byte _term_offset = 0;
-bool _is_gps_data_good;
+char _is_gps_data_good;
 
 #ifndef GPS_NO_STATS
   // statistics
@@ -60,7 +60,7 @@ bool _is_gps_data_good;
 //
 
 // verify is character is a digit
-bool gpsisdigit(char c) { return c >= '0' && c <= '9'; }
+char gpsisdigit(char c) { return c >= '0' && c <= '9'; }
 
 // signed altitude in centimeters (from GPGGA sentence)
 inline long altitude() { return _altitude; }
@@ -87,9 +87,9 @@ float degrees(float rad)
 	return rad * (180/PI);
 }
 
-bool encode(char c)
+char encode(char c)
 {
-  bool valid_sentence = false;
+  char valid_sentence = false;
 
 #ifndef GPS_NO_STATS
   _encoded_characters++;
@@ -159,7 +159,7 @@ int from_hex(char a)
 unsigned long gps_parse_decimal()
 {
   char *p;
-  bool isneg;
+  char isneg;
   unsigned long ret;
 
   p = _term;
@@ -212,7 +212,7 @@ unsigned long gps_parse_degrees()
 /* Processes a just-completed term
  * Returns true if new sentence has just passed checksum test and is validated
  */
-bool gps_term_complete()
+char gps_term_complete()
 {
   if (_is_checksum_term)
   {

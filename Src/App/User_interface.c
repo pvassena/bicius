@@ -11,39 +11,51 @@ static void effect_main_region_Cronometro_tr0(User_interface* handle);
 static void effect_main_region_Cuenta_Regresiva_tr0(User_interface* handle);
 static void enact_main_region_Principal(User_interface* handle);
 static void enact_main_region_Cronometro_r1_Inicializar(User_interface* handle);
-static void enact_main_region_Cuenta_Regresiva_r1_Inicializar(User_interface* handle);
-static void enact_main_region_Cuenta_Regresiva_r1_Corriendo(User_interface* handle);
+static void enact_main_region_Cuenta_Regresiva_s_Inicializar(User_interface* handle);
+static void enact_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos(User_interface* handle);
+static void enact_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos(User_interface* handle);
+static void enact_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas(User_interface* handle);
+static void enact_main_region_Cuenta_Regresiva_s_Corriendo(User_interface* handle);
 static void enseq_main_region_Principal_default(User_interface* handle);
 static void enseq_main_region_Cronometro_default(User_interface* handle);
 static void enseq_main_region_Cronometro_r1_Inicializar_default(User_interface* handle);
 static void enseq_main_region_Cronometro_r1_Corriendo_default(User_interface* handle);
 static void enseq_main_region_Cronometro_r1_Pausar_default(User_interface* handle);
 static void enseq_main_region_Cuenta_Regresiva_default(User_interface* handle);
-static void enseq_main_region_Cuenta_Regresiva_r1_Inicializar_default(User_interface* handle);
-static void enseq_main_region_Cuenta_Regresiva_r1_Corriendo_default(User_interface* handle);
-static void enseq_main_region_Cuenta_Regresiva_r1_Pausar_default(User_interface* handle);
-static void enseq_main_region_Cuenta_Regresiva_r1_Finalizado_default(User_interface* handle);
+static void enseq_main_region_Cuenta_Regresiva_s_Inicializar_default(User_interface* handle);
+static void enseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos_default(User_interface* handle);
+static void enseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos_default(User_interface* handle);
+static void enseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas_default(User_interface* handle);
+static void enseq_main_region_Cuenta_Regresiva_s_Corriendo_default(User_interface* handle);
+static void enseq_main_region_Cuenta_Regresiva_s_Pausar_default(User_interface* handle);
+static void enseq_main_region_Cuenta_Regresiva_s_Finalizado_default(User_interface* handle);
 static void enseq_main_region_default(User_interface* handle);
 static void enseq_main_region_Cronometro_r1_default(User_interface* handle);
-static void enseq_main_region_Cuenta_Regresiva_r1_default(User_interface* handle);
+static void enseq_main_region_Cuenta_Regresiva_s_default(User_interface* handle);
+static void enseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_default(User_interface* handle);
 static void exseq_main_region_Principal(User_interface* handle);
 static void exseq_main_region_Cronometro(User_interface* handle);
 static void exseq_main_region_Cronometro_r1_Inicializar(User_interface* handle);
 static void exseq_main_region_Cronometro_r1_Corriendo(User_interface* handle);
 static void exseq_main_region_Cronometro_r1_Pausar(User_interface* handle);
 static void exseq_main_region_Cuenta_Regresiva(User_interface* handle);
-static void exseq_main_region_Cuenta_Regresiva_r1_Inicializar(User_interface* handle);
-static void exseq_main_region_Cuenta_Regresiva_r1_Corriendo(User_interface* handle);
-static void exseq_main_region_Cuenta_Regresiva_r1_Pausar(User_interface* handle);
-static void exseq_main_region_Cuenta_Regresiva_r1_Finalizado(User_interface* handle);
+static void exseq_main_region_Cuenta_Regresiva_s_Inicializar(User_interface* handle);
+static void exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos(User_interface* handle);
+static void exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos(User_interface* handle);
+static void exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas(User_interface* handle);
+static void exseq_main_region_Cuenta_Regresiva_s_Corriendo(User_interface* handle);
+static void exseq_main_region_Cuenta_Regresiva_s_Pausar(User_interface* handle);
+static void exseq_main_region_Cuenta_Regresiva_s_Finalizado(User_interface* handle);
 static void exseq_main_region(User_interface* handle);
 static void exseq_main_region_Cronometro_r1(User_interface* handle);
-static void exseq_main_region_Cuenta_Regresiva_r1(User_interface* handle);
+static void exseq_main_region_Cuenta_Regresiva_s(User_interface* handle);
+static void exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1(User_interface* handle);
 static void react_main_region__entry_Default(User_interface* handle);
 static void react_main_region_Cronometro_r1__entry_Default(User_interface* handle);
-static void react_main_region_Cuenta_Regresiva_r1__entry_Default(User_interface* handle);
+static void react_main_region_Cuenta_Regresiva_s__entry_Default(User_interface* handle);
+static void react_main_region_Cuenta_Regresiva_s_Inicializar_r1__entry_Default(User_interface* handle);
 static void react_main_region_Cronometro_r1__exit_Default(User_interface* handle);
-static void react_main_region_Cuenta_Regresiva_r1__exit_Default(User_interface* handle);
+static void react_main_region_Cuenta_Regresiva_s__exit_Default(User_interface* handle);
 static sc_boolean react(User_interface* handle);
 static sc_boolean main_region_Principal_react(User_interface* handle, const sc_boolean try_transition);
 static sc_boolean main_region_Cronometro_react(User_interface* handle, const sc_boolean try_transition);
@@ -51,10 +63,13 @@ static sc_boolean main_region_Cronometro_r1_Inicializar_react(User_interface* ha
 static sc_boolean main_region_Cronometro_r1_Corriendo_react(User_interface* handle, const sc_boolean try_transition);
 static sc_boolean main_region_Cronometro_r1_Pausar_react(User_interface* handle, const sc_boolean try_transition);
 static sc_boolean main_region_Cuenta_Regresiva_react(User_interface* handle, const sc_boolean try_transition);
-static sc_boolean main_region_Cuenta_Regresiva_r1_Inicializar_react(User_interface* handle, const sc_boolean try_transition);
-static sc_boolean main_region_Cuenta_Regresiva_r1_Corriendo_react(User_interface* handle, const sc_boolean try_transition);
-static sc_boolean main_region_Cuenta_Regresiva_r1_Pausar_react(User_interface* handle, const sc_boolean try_transition);
-static sc_boolean main_region_Cuenta_Regresiva_r1_Finalizado_react(User_interface* handle, const sc_boolean try_transition);
+static sc_boolean main_region_Cuenta_Regresiva_s_Inicializar_react(User_interface* handle, const sc_boolean try_transition);
+static sc_boolean main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos_react(User_interface* handle, const sc_boolean try_transition);
+static sc_boolean main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos_react(User_interface* handle, const sc_boolean try_transition);
+static sc_boolean main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas_react(User_interface* handle, const sc_boolean try_transition);
+static sc_boolean main_region_Cuenta_Regresiva_s_Corriendo_react(User_interface* handle, const sc_boolean try_transition);
+static sc_boolean main_region_Cuenta_Regresiva_s_Pausar_react(User_interface* handle, const sc_boolean try_transition);
+static sc_boolean main_region_Cuenta_Regresiva_s_Finalizado_react(User_interface* handle, const sc_boolean try_transition);
 static void clearInEvents(User_interface* handle);
 static void clearOutEvents(User_interface* handle);
 
@@ -115,24 +130,34 @@ void user_interface_runCycle(User_interface* handle)
 			main_region_Cronometro_r1_Pausar_react(handle, bool_true);
 			break;
 		}
-		case User_interface_main_region_Cuenta_Regresiva_r1_Inicializar:
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos:
 		{
-			main_region_Cuenta_Regresiva_r1_Inicializar_react(handle, bool_true);
+			main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos_react(handle, bool_true);
 			break;
 		}
-		case User_interface_main_region_Cuenta_Regresiva_r1_Corriendo:
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos:
 		{
-			main_region_Cuenta_Regresiva_r1_Corriendo_react(handle, bool_true);
+			main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos_react(handle, bool_true);
 			break;
 		}
-		case User_interface_main_region_Cuenta_Regresiva_r1_Pausar:
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas:
 		{
-			main_region_Cuenta_Regresiva_r1_Pausar_react(handle, bool_true);
+			main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas_react(handle, bool_true);
 			break;
 		}
-		case User_interface_main_region_Cuenta_Regresiva_r1_Finalizado:
+		case User_interface_main_region_Cuenta_Regresiva_s_Corriendo:
 		{
-			main_region_Cuenta_Regresiva_r1_Finalizado_react(handle, bool_true);
+			main_region_Cuenta_Regresiva_s_Corriendo_react(handle, bool_true);
+			break;
+		}
+		case User_interface_main_region_Cuenta_Regresiva_s_Pausar:
+		{
+			main_region_Cuenta_Regresiva_s_Pausar_react(handle, bool_true);
+			break;
+		}
+		case User_interface_main_region_Cuenta_Regresiva_s_Finalizado:
+		{
+			main_region_Cuenta_Regresiva_s_Finalizado_react(handle, bool_true);
 			break;
 		}
 		default:
@@ -199,22 +224,34 @@ sc_boolean user_interface_isStateActive(const User_interface* handle, User_inter
 			break;
 		case User_interface_main_region_Cuenta_Regresiva :
 			result = (sc_boolean) (handle->stateConfVector[SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA] >= User_interface_main_region_Cuenta_Regresiva
-				&& handle->stateConfVector[SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA] <= User_interface_main_region_Cuenta_Regresiva_r1_Finalizado);
+				&& handle->stateConfVector[SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA] <= User_interface_main_region_Cuenta_Regresiva_s_Finalizado);
 			break;
-		case User_interface_main_region_Cuenta_Regresiva_r1_Inicializar :
-			result = (sc_boolean) (handle->stateConfVector[SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_R1_INICIALIZAR] == User_interface_main_region_Cuenta_Regresiva_r1_Inicializar
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar :
+			result = (sc_boolean) (handle->stateConfVector[SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_S_INICIALIZAR] >= User_interface_main_region_Cuenta_Regresiva_s_Inicializar
+				&& handle->stateConfVector[SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_S_INICIALIZAR] <= User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas);
+			break;
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos :
+			result = (sc_boolean) (handle->stateConfVector[SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_S_INICIALIZAR_R1_SEGUNDOS] == User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos
 			);
 			break;
-		case User_interface_main_region_Cuenta_Regresiva_r1_Corriendo :
-			result = (sc_boolean) (handle->stateConfVector[SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_R1_CORRIENDO] == User_interface_main_region_Cuenta_Regresiva_r1_Corriendo
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos :
+			result = (sc_boolean) (handle->stateConfVector[SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_S_INICIALIZAR_R1_MINUTOS] == User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos
 			);
 			break;
-		case User_interface_main_region_Cuenta_Regresiva_r1_Pausar :
-			result = (sc_boolean) (handle->stateConfVector[SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_R1_PAUSAR] == User_interface_main_region_Cuenta_Regresiva_r1_Pausar
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas :
+			result = (sc_boolean) (handle->stateConfVector[SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_S_INICIALIZAR_R1_HORAS] == User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas
 			);
 			break;
-		case User_interface_main_region_Cuenta_Regresiva_r1_Finalizado :
-			result = (sc_boolean) (handle->stateConfVector[SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_R1_FINALIZADO] == User_interface_main_region_Cuenta_Regresiva_r1_Finalizado
+		case User_interface_main_region_Cuenta_Regresiva_s_Corriendo :
+			result = (sc_boolean) (handle->stateConfVector[SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_S_CORRIENDO] == User_interface_main_region_Cuenta_Regresiva_s_Corriendo
+			);
+			break;
+		case User_interface_main_region_Cuenta_Regresiva_s_Pausar :
+			result = (sc_boolean) (handle->stateConfVector[SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_S_PAUSAR] == User_interface_main_region_Cuenta_Regresiva_s_Pausar
+			);
+			break;
+		case User_interface_main_region_Cuenta_Regresiva_s_Finalizado :
+			result = (sc_boolean) (handle->stateConfVector[SCVI_USER_INTERFACE_MAIN_REGION_CUENTA_REGRESIVA_S_FINALIZADO] == User_interface_main_region_Cuenta_Regresiva_s_Finalizado
 			);
 			break;
 		default:
@@ -238,8 +275,9 @@ static void clearOutEvents(User_interface* handle)
 	handle->iface.TIM_UP_raised = bool_false;
 	handle->iface.TIM_DOWN_raised = bool_false;
 	handle->iface.RESET_TIM_raised = bool_false;
-	handle->iface.UPDATE_raised = bool_false;
-	handle->iface.NEXT_raised = bool_false;
+	handle->iface.SEGUNDOS_raised = bool_false;
+	handle->iface.MINUTOS_raised = bool_false;
+	handle->iface.HORAS_raised = bool_false;
 }
 
 void user_interfaceIface_raise_uP(User_interface* handle)
@@ -285,13 +323,17 @@ sc_boolean user_interfaceIface_israised_rESET_TIM(const User_interface* handle)
 {
 	return handle->iface.RESET_TIM_raised;
 }
-sc_boolean user_interfaceIface_israised_uPDATE(const User_interface* handle)
+sc_boolean user_interfaceIface_israised_sEGUNDOS(const User_interface* handle)
 {
-	return handle->iface.UPDATE_raised;
+	return handle->iface.SEGUNDOS_raised;
 }
-sc_boolean user_interfaceIface_israised_nEXT(const User_interface* handle)
+sc_boolean user_interfaceIface_israised_mINUTOS(const User_interface* handle)
 {
-	return handle->iface.NEXT_raised;
+	return handle->iface.MINUTOS_raised;
+}
+sc_boolean user_interfaceIface_israised_hORAS(const User_interface* handle)
+{
+	return handle->iface.HORAS_raised;
 }
 
 sc_integer user_interfaceIface_get_oLED_ST(const User_interface* handle)
@@ -336,19 +378,39 @@ static void enact_main_region_Cronometro_r1_Inicializar(User_interface* handle)
 }
 
 /* Entry action for state 'Inicializar'. */
-static void enact_main_region_Cuenta_Regresiva_r1_Inicializar(User_interface* handle)
+static void enact_main_region_Cuenta_Regresiva_s_Inicializar(User_interface* handle)
 {
 	/* Entry action for state 'Inicializar'. */
 	handle->iface.RESET_TIM_raised = bool_true
 	;
+}
+
+/* Entry action for state 'Segundos'. */
+static void enact_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos(User_interface* handle)
+{
+	/* Entry action for state 'Segundos'. */
 	handle->iface.OLED_ST = 2;
 }
 
+/* Entry action for state 'Minutos'. */
+static void enact_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos(User_interface* handle)
+{
+	/* Entry action for state 'Minutos'. */
+	handle->iface.OLED_ST = 3;
+}
+
+/* Entry action for state 'Horas'. */
+static void enact_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas(User_interface* handle)
+{
+	/* Entry action for state 'Horas'. */
+	handle->iface.OLED_ST = 4;
+}
+
 /* Entry action for state 'Corriendo'. */
-static void enact_main_region_Cuenta_Regresiva_r1_Corriendo(User_interface* handle)
+static void enact_main_region_Cuenta_Regresiva_s_Corriendo(User_interface* handle)
 {
 	/* Entry action for state 'Corriendo'. */
-	handle->iface.OLED_ST = 3;
+	handle->iface.OLED_ST = 1;
 }
 
 /* 'default' enter sequence for state Principal */
@@ -396,40 +458,66 @@ static void enseq_main_region_Cronometro_r1_Pausar_default(User_interface* handl
 static void enseq_main_region_Cuenta_Regresiva_default(User_interface* handle)
 {
 	/* 'default' enter sequence for state Cuenta Regresiva */
-	enseq_main_region_Cuenta_Regresiva_r1_default(handle);
+	enseq_main_region_Cuenta_Regresiva_s_default(handle);
 }
 
 /* 'default' enter sequence for state Inicializar */
-static void enseq_main_region_Cuenta_Regresiva_r1_Inicializar_default(User_interface* handle)
+static void enseq_main_region_Cuenta_Regresiva_s_Inicializar_default(User_interface* handle)
 {
 	/* 'default' enter sequence for state Inicializar */
-	enact_main_region_Cuenta_Regresiva_r1_Inicializar(handle);
-	handle->stateConfVector[0] = User_interface_main_region_Cuenta_Regresiva_r1_Inicializar;
+	enact_main_region_Cuenta_Regresiva_s_Inicializar(handle);
+	enseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_default(handle);
+}
+
+/* 'default' enter sequence for state Segundos */
+static void enseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos_default(User_interface* handle)
+{
+	/* 'default' enter sequence for state Segundos */
+	enact_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos(handle);
+	handle->stateConfVector[0] = User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos;
+	handle->stateConfVectorPosition = 0;
+}
+
+/* 'default' enter sequence for state Minutos */
+static void enseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos_default(User_interface* handle)
+{
+	/* 'default' enter sequence for state Minutos */
+	enact_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos(handle);
+	handle->stateConfVector[0] = User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos;
+	handle->stateConfVectorPosition = 0;
+}
+
+/* 'default' enter sequence for state Horas */
+static void enseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas_default(User_interface* handle)
+{
+	/* 'default' enter sequence for state Horas */
+	enact_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas(handle);
+	handle->stateConfVector[0] = User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas;
 	handle->stateConfVectorPosition = 0;
 }
 
 /* 'default' enter sequence for state Corriendo */
-static void enseq_main_region_Cuenta_Regresiva_r1_Corriendo_default(User_interface* handle)
+static void enseq_main_region_Cuenta_Regresiva_s_Corriendo_default(User_interface* handle)
 {
 	/* 'default' enter sequence for state Corriendo */
-	enact_main_region_Cuenta_Regresiva_r1_Corriendo(handle);
-	handle->stateConfVector[0] = User_interface_main_region_Cuenta_Regresiva_r1_Corriendo;
+	enact_main_region_Cuenta_Regresiva_s_Corriendo(handle);
+	handle->stateConfVector[0] = User_interface_main_region_Cuenta_Regresiva_s_Corriendo;
 	handle->stateConfVectorPosition = 0;
 }
 
 /* 'default' enter sequence for state Pausar */
-static void enseq_main_region_Cuenta_Regresiva_r1_Pausar_default(User_interface* handle)
+static void enseq_main_region_Cuenta_Regresiva_s_Pausar_default(User_interface* handle)
 {
 	/* 'default' enter sequence for state Pausar */
-	handle->stateConfVector[0] = User_interface_main_region_Cuenta_Regresiva_r1_Pausar;
+	handle->stateConfVector[0] = User_interface_main_region_Cuenta_Regresiva_s_Pausar;
 	handle->stateConfVectorPosition = 0;
 }
 
 /* 'default' enter sequence for state Finalizado */
-static void enseq_main_region_Cuenta_Regresiva_r1_Finalizado_default(User_interface* handle)
+static void enseq_main_region_Cuenta_Regresiva_s_Finalizado_default(User_interface* handle)
 {
 	/* 'default' enter sequence for state Finalizado */
-	handle->stateConfVector[0] = User_interface_main_region_Cuenta_Regresiva_r1_Finalizado;
+	handle->stateConfVector[0] = User_interface_main_region_Cuenta_Regresiva_s_Finalizado;
 	handle->stateConfVectorPosition = 0;
 }
 
@@ -447,11 +535,18 @@ static void enseq_main_region_Cronometro_r1_default(User_interface* handle)
 	react_main_region_Cronometro_r1__entry_Default(handle);
 }
 
+/* 'default' enter sequence for region s */
+static void enseq_main_region_Cuenta_Regresiva_s_default(User_interface* handle)
+{
+	/* 'default' enter sequence for region s */
+	react_main_region_Cuenta_Regresiva_s__entry_Default(handle);
+}
+
 /* 'default' enter sequence for region r1 */
-static void enseq_main_region_Cuenta_Regresiva_r1_default(User_interface* handle)
+static void enseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_default(User_interface* handle)
 {
 	/* 'default' enter sequence for region r1 */
-	react_main_region_Cuenta_Regresiva_r1__entry_Default(handle);
+	react_main_region_Cuenta_Regresiva_s_Inicializar_r1__entry_Default(handle);
 }
 
 /* Default exit sequence for state Principal */
@@ -497,19 +592,42 @@ static void exseq_main_region_Cronometro_r1_Pausar(User_interface* handle)
 static void exseq_main_region_Cuenta_Regresiva(User_interface* handle)
 {
 	/* Default exit sequence for state Cuenta Regresiva */
-	exseq_main_region_Cuenta_Regresiva_r1(handle);
+	exseq_main_region_Cuenta_Regresiva_s(handle);
 }
 
 /* Default exit sequence for state Inicializar */
-static void exseq_main_region_Cuenta_Regresiva_r1_Inicializar(User_interface* handle)
+static void exseq_main_region_Cuenta_Regresiva_s_Inicializar(User_interface* handle)
 {
 	/* Default exit sequence for state Inicializar */
+	exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1(handle);
+}
+
+/* Default exit sequence for state Segundos */
+static void exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos(User_interface* handle)
+{
+	/* Default exit sequence for state Segundos */
+	handle->stateConfVector[0] = User_interface_last_state;
+	handle->stateConfVectorPosition = 0;
+}
+
+/* Default exit sequence for state Minutos */
+static void exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos(User_interface* handle)
+{
+	/* Default exit sequence for state Minutos */
+	handle->stateConfVector[0] = User_interface_last_state;
+	handle->stateConfVectorPosition = 0;
+}
+
+/* Default exit sequence for state Horas */
+static void exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas(User_interface* handle)
+{
+	/* Default exit sequence for state Horas */
 	handle->stateConfVector[0] = User_interface_last_state;
 	handle->stateConfVectorPosition = 0;
 }
 
 /* Default exit sequence for state Corriendo */
-static void exseq_main_region_Cuenta_Regresiva_r1_Corriendo(User_interface* handle)
+static void exseq_main_region_Cuenta_Regresiva_s_Corriendo(User_interface* handle)
 {
 	/* Default exit sequence for state Corriendo */
 	handle->stateConfVector[0] = User_interface_last_state;
@@ -517,7 +635,7 @@ static void exseq_main_region_Cuenta_Regresiva_r1_Corriendo(User_interface* hand
 }
 
 /* Default exit sequence for state Pausar */
-static void exseq_main_region_Cuenta_Regresiva_r1_Pausar(User_interface* handle)
+static void exseq_main_region_Cuenta_Regresiva_s_Pausar(User_interface* handle)
 {
 	/* Default exit sequence for state Pausar */
 	handle->stateConfVector[0] = User_interface_last_state;
@@ -525,7 +643,7 @@ static void exseq_main_region_Cuenta_Regresiva_r1_Pausar(User_interface* handle)
 }
 
 /* Default exit sequence for state Finalizado */
-static void exseq_main_region_Cuenta_Regresiva_r1_Finalizado(User_interface* handle)
+static void exseq_main_region_Cuenta_Regresiva_s_Finalizado(User_interface* handle)
 {
 	/* Default exit sequence for state Finalizado */
 	handle->stateConfVector[0] = User_interface_last_state;
@@ -559,24 +677,34 @@ static void exseq_main_region(User_interface* handle)
 			exseq_main_region_Cronometro_r1_Pausar(handle);
 			break;
 		}
-		case User_interface_main_region_Cuenta_Regresiva_r1_Inicializar :
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos :
 		{
-			exseq_main_region_Cuenta_Regresiva_r1_Inicializar(handle);
+			exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos(handle);
 			break;
 		}
-		case User_interface_main_region_Cuenta_Regresiva_r1_Corriendo :
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos :
 		{
-			exseq_main_region_Cuenta_Regresiva_r1_Corriendo(handle);
+			exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos(handle);
 			break;
 		}
-		case User_interface_main_region_Cuenta_Regresiva_r1_Pausar :
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas :
 		{
-			exseq_main_region_Cuenta_Regresiva_r1_Pausar(handle);
+			exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas(handle);
 			break;
 		}
-		case User_interface_main_region_Cuenta_Regresiva_r1_Finalizado :
+		case User_interface_main_region_Cuenta_Regresiva_s_Corriendo :
 		{
-			exseq_main_region_Cuenta_Regresiva_r1_Finalizado(handle);
+			exseq_main_region_Cuenta_Regresiva_s_Corriendo(handle);
+			break;
+		}
+		case User_interface_main_region_Cuenta_Regresiva_s_Pausar :
+		{
+			exseq_main_region_Cuenta_Regresiva_s_Pausar(handle);
+			break;
+		}
+		case User_interface_main_region_Cuenta_Regresiva_s_Finalizado :
+		{
+			exseq_main_region_Cuenta_Regresiva_s_Finalizado(handle);
 			break;
 		}
 		default: break;
@@ -609,31 +737,67 @@ static void exseq_main_region_Cronometro_r1(User_interface* handle)
 	}
 }
 
-/* Default exit sequence for region r1 */
-static void exseq_main_region_Cuenta_Regresiva_r1(User_interface* handle)
+/* Default exit sequence for region s */
+static void exseq_main_region_Cuenta_Regresiva_s(User_interface* handle)
 {
-	/* Default exit sequence for region r1 */
-	/* Handle exit of all possible states (of user_interface.main_region.Cuenta_Regresiva.r1) at position 0... */
+	/* Default exit sequence for region s */
+	/* Handle exit of all possible states (of user_interface.main_region.Cuenta_Regresiva.s) at position 0... */
 	switch(handle->stateConfVector[ 0 ])
 	{
-		case User_interface_main_region_Cuenta_Regresiva_r1_Inicializar :
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos :
 		{
-			exseq_main_region_Cuenta_Regresiva_r1_Inicializar(handle);
+			exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos(handle);
 			break;
 		}
-		case User_interface_main_region_Cuenta_Regresiva_r1_Corriendo :
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos :
 		{
-			exseq_main_region_Cuenta_Regresiva_r1_Corriendo(handle);
+			exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos(handle);
 			break;
 		}
-		case User_interface_main_region_Cuenta_Regresiva_r1_Pausar :
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas :
 		{
-			exseq_main_region_Cuenta_Regresiva_r1_Pausar(handle);
+			exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas(handle);
 			break;
 		}
-		case User_interface_main_region_Cuenta_Regresiva_r1_Finalizado :
+		case User_interface_main_region_Cuenta_Regresiva_s_Corriendo :
 		{
-			exseq_main_region_Cuenta_Regresiva_r1_Finalizado(handle);
+			exseq_main_region_Cuenta_Regresiva_s_Corriendo(handle);
+			break;
+		}
+		case User_interface_main_region_Cuenta_Regresiva_s_Pausar :
+		{
+			exseq_main_region_Cuenta_Regresiva_s_Pausar(handle);
+			break;
+		}
+		case User_interface_main_region_Cuenta_Regresiva_s_Finalizado :
+		{
+			exseq_main_region_Cuenta_Regresiva_s_Finalizado(handle);
+			break;
+		}
+		default: break;
+	}
+}
+
+/* Default exit sequence for region r1 */
+static void exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1(User_interface* handle)
+{
+	/* Default exit sequence for region r1 */
+	/* Handle exit of all possible states (of user_interface.main_region.Cuenta_Regresiva.s.Inicializar.r1) at position 0... */
+	switch(handle->stateConfVector[ 0 ])
+	{
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos :
+		{
+			exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos(handle);
+			break;
+		}
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos :
+		{
+			exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos(handle);
+			break;
+		}
+		case User_interface_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas :
+		{
+			exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas(handle);
 			break;
 		}
 		default: break;
@@ -655,10 +819,17 @@ static void react_main_region_Cronometro_r1__entry_Default(User_interface* handl
 }
 
 /* Default react sequence for initial entry  */
-static void react_main_region_Cuenta_Regresiva_r1__entry_Default(User_interface* handle)
+static void react_main_region_Cuenta_Regresiva_s__entry_Default(User_interface* handle)
 {
 	/* Default react sequence for initial entry  */
-	enseq_main_region_Cuenta_Regresiva_r1_Inicializar_default(handle);
+	enseq_main_region_Cuenta_Regresiva_s_Inicializar_default(handle);
+}
+
+/* Default react sequence for initial entry  */
+static void react_main_region_Cuenta_Regresiva_s_Inicializar_r1__entry_Default(User_interface* handle)
+{
+	/* Default react sequence for initial entry  */
+	enseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos_default(handle);
 }
 
 /* The reactions of exit default. */
@@ -669,7 +840,7 @@ static void react_main_region_Cronometro_r1__exit_Default(User_interface* handle
 }
 
 /* The reactions of exit default. */
-static void react_main_region_Cuenta_Regresiva_r1__exit_Default(User_interface* handle)
+static void react_main_region_Cuenta_Regresiva_s__exit_Default(User_interface* handle)
 {
 	/* The reactions of exit default. */
 	effect_main_region_Cuenta_Regresiva_tr0(handle);
@@ -821,22 +992,22 @@ static sc_boolean main_region_Cuenta_Regresiva_react(User_interface* handle, con
 	return did_transition;
 }
 
-static sc_boolean main_region_Cuenta_Regresiva_r1_Inicializar_react(User_interface* handle, const sc_boolean try_transition) {
+static sc_boolean main_region_Cuenta_Regresiva_s_Inicializar_react(User_interface* handle, const sc_boolean try_transition) {
 	/* The reactions of state Inicializar. */
 	sc_boolean did_transition = try_transition;
 	if (try_transition == bool_true)
 	{ 
 		if (handle->iface.SET_raised == bool_true)
 		{ 
-			exseq_main_region_Cuenta_Regresiva_r1_Inicializar(handle);
-			enseq_main_region_Cuenta_Regresiva_r1_Corriendo_default(handle);
+			exseq_main_region_Cuenta_Regresiva_s_Inicializar(handle);
+			enseq_main_region_Cuenta_Regresiva_s_Corriendo_default(handle);
 			main_region_Cuenta_Regresiva_react(handle, bool_false);
 		}  else
 		{
 			if (handle->iface.RESET_raised == bool_true)
 			{ 
-				exseq_main_region_Cuenta_Regresiva_r1_Inicializar(handle);
-				react_main_region_Cuenta_Regresiva_r1__exit_Default(handle);
+				exseq_main_region_Cuenta_Regresiva_s_Inicializar(handle);
+				react_main_region_Cuenta_Regresiva_s__exit_Default(handle);
 			}  else
 			{
 				did_transition = bool_false;
@@ -845,37 +1016,108 @@ static sc_boolean main_region_Cuenta_Regresiva_r1_Inicializar_react(User_interfa
 	} 
 	if ((did_transition) == (bool_false))
 	{ 
-		if (handle->iface.UP_raised == bool_true)
-		{ 
-			handle->iface.UPDATE_raised = bool_true
-			;
-		} 
-		if (handle->iface.DOWN_raised == bool_true)
-		{ 
-			handle->iface.NEXT_raised = bool_true
-			;
-		} 
 		did_transition = main_region_Cuenta_Regresiva_react(handle, try_transition);
 	} 
 	return did_transition;
 }
 
-static sc_boolean main_region_Cuenta_Regresiva_r1_Corriendo_react(User_interface* handle, const sc_boolean try_transition) {
+static sc_boolean main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos_react(User_interface* handle, const sc_boolean try_transition) {
+	/* The reactions of state Segundos. */
+	sc_boolean did_transition = try_transition;
+	if (try_transition == bool_true)
+	{ 
+		if (handle->iface.DOWN_raised == bool_true)
+		{ 
+			exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos(handle);
+			enseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos_default(handle);
+			main_region_Cuenta_Regresiva_s_Inicializar_react(handle, bool_false);
+		}  else
+		{
+			did_transition = bool_false;
+		}
+	} 
+	if ((did_transition) == (bool_false))
+	{ 
+		if (handle->iface.UP_raised == bool_true)
+		{ 
+			handle->iface.SEGUNDOS_raised = bool_true
+			;
+		} 
+		did_transition = main_region_Cuenta_Regresiva_s_Inicializar_react(handle, try_transition);
+	} 
+	return did_transition;
+}
+
+static sc_boolean main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos_react(User_interface* handle, const sc_boolean try_transition) {
+	/* The reactions of state Minutos. */
+	sc_boolean did_transition = try_transition;
+	if (try_transition == bool_true)
+	{ 
+		if (handle->iface.DOWN_raised == bool_true)
+		{ 
+			exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Minutos(handle);
+			enseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas_default(handle);
+			main_region_Cuenta_Regresiva_s_Inicializar_react(handle, bool_false);
+		}  else
+		{
+			did_transition = bool_false;
+		}
+	} 
+	if ((did_transition) == (bool_false))
+	{ 
+		if (handle->iface.UP_raised == bool_true)
+		{ 
+			handle->iface.MINUTOS_raised = bool_true
+			;
+		} 
+		did_transition = main_region_Cuenta_Regresiva_s_Inicializar_react(handle, try_transition);
+	} 
+	return did_transition;
+}
+
+static sc_boolean main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas_react(User_interface* handle, const sc_boolean try_transition) {
+	/* The reactions of state Horas. */
+	sc_boolean did_transition = try_transition;
+	if (try_transition == bool_true)
+	{ 
+		if (handle->iface.DOWN_raised == bool_true)
+		{ 
+			exseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Horas(handle);
+			enseq_main_region_Cuenta_Regresiva_s_Inicializar_r1_Segundos_default(handle);
+			main_region_Cuenta_Regresiva_s_Inicializar_react(handle, bool_false);
+		}  else
+		{
+			did_transition = bool_false;
+		}
+	} 
+	if ((did_transition) == (bool_false))
+	{ 
+		if (handle->iface.UP_raised == bool_true)
+		{ 
+			handle->iface.HORAS_raised = bool_true
+			;
+		} 
+		did_transition = main_region_Cuenta_Regresiva_s_Inicializar_react(handle, try_transition);
+	} 
+	return did_transition;
+}
+
+static sc_boolean main_region_Cuenta_Regresiva_s_Corriendo_react(User_interface* handle, const sc_boolean try_transition) {
 	/* The reactions of state Corriendo. */
 	sc_boolean did_transition = try_transition;
 	if (try_transition == bool_true)
 	{ 
 		if (handle->iface.SET_raised == bool_true)
 		{ 
-			exseq_main_region_Cuenta_Regresiva_r1_Corriendo(handle);
-			enseq_main_region_Cuenta_Regresiva_r1_Pausar_default(handle);
+			exseq_main_region_Cuenta_Regresiva_s_Corriendo(handle);
+			enseq_main_region_Cuenta_Regresiva_s_Pausar_default(handle);
 			main_region_Cuenta_Regresiva_react(handle, bool_false);
 		}  else
 		{
 			if (handle->iface.TIMEOUT_raised == bool_true)
 			{ 
-				exseq_main_region_Cuenta_Regresiva_r1_Corriendo(handle);
-				enseq_main_region_Cuenta_Regresiva_r1_Finalizado_default(handle);
+				exseq_main_region_Cuenta_Regresiva_s_Corriendo(handle);
+				enseq_main_region_Cuenta_Regresiva_s_Finalizado_default(handle);
 				main_region_Cuenta_Regresiva_react(handle, bool_false);
 			}  else
 			{
@@ -892,22 +1134,22 @@ static sc_boolean main_region_Cuenta_Regresiva_r1_Corriendo_react(User_interface
 	return did_transition;
 }
 
-static sc_boolean main_region_Cuenta_Regresiva_r1_Pausar_react(User_interface* handle, const sc_boolean try_transition) {
+static sc_boolean main_region_Cuenta_Regresiva_s_Pausar_react(User_interface* handle, const sc_boolean try_transition) {
 	/* The reactions of state Pausar. */
 	sc_boolean did_transition = try_transition;
 	if (try_transition == bool_true)
 	{ 
 		if (handle->iface.SET_raised == bool_true)
 		{ 
-			exseq_main_region_Cuenta_Regresiva_r1_Pausar(handle);
-			enseq_main_region_Cuenta_Regresiva_r1_Corriendo_default(handle);
+			exseq_main_region_Cuenta_Regresiva_s_Pausar(handle);
+			enseq_main_region_Cuenta_Regresiva_s_Corriendo_default(handle);
 			main_region_Cuenta_Regresiva_react(handle, bool_false);
 		}  else
 		{
 			if (handle->iface.RESET_raised == bool_true)
 			{ 
-				exseq_main_region_Cuenta_Regresiva_r1_Pausar(handle);
-				enseq_main_region_Cuenta_Regresiva_r1_Inicializar_default(handle);
+				exseq_main_region_Cuenta_Regresiva_s_Pausar(handle);
+				enseq_main_region_Cuenta_Regresiva_s_Inicializar_default(handle);
 				main_region_Cuenta_Regresiva_react(handle, bool_false);
 			}  else
 			{
@@ -922,15 +1164,15 @@ static sc_boolean main_region_Cuenta_Regresiva_r1_Pausar_react(User_interface* h
 	return did_transition;
 }
 
-static sc_boolean main_region_Cuenta_Regresiva_r1_Finalizado_react(User_interface* handle, const sc_boolean try_transition) {
+static sc_boolean main_region_Cuenta_Regresiva_s_Finalizado_react(User_interface* handle, const sc_boolean try_transition) {
 	/* The reactions of state Finalizado. */
 	sc_boolean did_transition = try_transition;
 	if (try_transition == bool_true)
 	{ 
 		if (handle->iface.RESET_raised == bool_true)
 		{ 
-			exseq_main_region_Cuenta_Regresiva_r1_Finalizado(handle);
-			react_main_region_Cuenta_Regresiva_r1__exit_Default(handle);
+			exseq_main_region_Cuenta_Regresiva_s_Finalizado(handle);
+			react_main_region_Cuenta_Regresiva_s__exit_Default(handle);
 		}  else
 		{
 			did_transition = bool_false;

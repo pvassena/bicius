@@ -29,6 +29,7 @@
 #include "App/tarea_TIMER.h"
 #include "App/tarea_GPS.h"
 #include "App/tarea_MAIN.h"
+#include "App/User_interface.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -79,14 +80,17 @@ char OLED_RIGHT_BUFFER[SIZE_OLED_RIGHT_BUFFER];
 char OLED_LEFT_UNITS_BUFFER[SIZE_OLED_LEFT_UNITS_BUFFER];
 char OLED_RIGHT_UNITS_BUFFER[SIZE_OLED_RIGHT_UNITS_BUFFER];
 
-uint32_t milliseconds;
-uint32_t seconds;
-uint32_t minutes;
-uint32_t hours;
+int milliseconds;
+int seconds;
+int minutes;
+int hours;
 
 uint32_t cnt;
+uint32_t digito_on;
 
-char RETURN_BUFFER[2]="\r\n";
+FATFS fs;
+FIL file;
+User_interface UIX;
 /* USER CODE END 0 */
 
 /**
@@ -96,7 +100,7 @@ char RETURN_BUFFER[2]="\r\n";
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	FATFS fs;
+
   /* USER CODE END 1 */
   
 
@@ -137,8 +141,12 @@ int main(void)
 
   //SD
   if(f_mount(&fs, "", 1)) while(1);
-  if(f_open(&fil, "log.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE)) while(1);
-  if(f_close(&fil)) while(1);
+  if(f_open(&file, "log.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE)) while(1);
+  if(f_close(&file)) while(1);
+
+  //máquina de estados
+  user_interface_init(&UIX);
+  user_interface_enter(&UIX);
 
   /* USER CODE END 2 */
 

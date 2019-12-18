@@ -6,11 +6,14 @@
  */
 #include "stm32f1xx_hal.h"
 #include "fatfs.h"
+#include "App/User_interface.h"
 
 #ifndef VARIABLES_GLOBALES_H_
 #define VARIABLES_GLOBALES_H_
 
-FIL fil;
+extern FIL file;
+extern FATFS fs;
+extern User_interface UIX;
 
 //Tamaño de buffer de UART
 #define SIZE_UART_RX_BUFFER 			256
@@ -36,10 +39,14 @@ extern char OLED_LEFT_UNITS_BUFFER[SIZE_OLED_LEFT_UNITS_BUFFER];
 extern char OLED_RIGHT_UNITS_BUFFER[SIZE_OLED_RIGHT_UNITS_BUFFER];
 
 //Variables de Timers
-extern uint32_t milliseconds;
-extern uint32_t seconds;
-extern uint32_t minutes;
-extern uint32_t hours;
+extern int milliseconds;
+extern int seconds;
+extern int minutes;
+extern int hours;
+
+//Variables de Reloj
+
+extern uint32_t digito_on;
 
 extern uint32_t cnt;
 

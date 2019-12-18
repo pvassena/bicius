@@ -1,0 +1,11 @@
+GeneratorModel for yakindu::c {
+
+	statechart user_interface {
+
+		feature Outlet {
+			targetProject = "STC_bicius"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src"
+		}
+	}
+}
