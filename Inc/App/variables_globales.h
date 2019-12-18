@@ -44,6 +44,10 @@ extern int seconds;
 extern int minutes;
 extern int hours;
 
+//Variables reloj
+extern int clk_hours;
+extern int clk_minutes;
+
 //Variables de Reloj
 
 extern uint32_t digito_on;

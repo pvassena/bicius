@@ -90,6 +90,10 @@ int hours;
 uint32_t cnt;
 uint32_t digito_on;
 
+//Variables reloj
+int clk_hours=0;
+int clk_minutes=0;
+
 FATFS fs;
 FIL file;
 User_interface UIX;
@@ -166,12 +170,12 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  WCET(tarea_GPIO(), wcet_GPIO);
-	  WCET(tarea_TIMER(), wcet_TIMER);
-	  WCET(tarea_GPS(), wcet_GPS);
-	  WCET(tarea_MAIN(), wcet_MAIN);
-	  WCET(tarea_OLED(), wcet_OLED);
-	  WCET(tarea_SD(), wcet_SD);
+	  WCET(tarea_GPIO, &wcet_GPIO);
+	  WCET(tarea_TIMER, &wcet_TIMER);
+	  WCET(tarea_GPS, &wcet_GPS);
+	  WCET(tarea_MAIN, &wcet_MAIN);
+	  WCET(tarea_OLED, &wcet_OLED);
+	  WCET(tarea_SD, &wcet_SD);
 
 	  //__WFI();
   }
