@@ -19,18 +19,17 @@ void tarea_GPIO(void)
 	{
 		user_interfaceIface_raise_dOWN(&UIX);
 	}
-	if(Debounce(GPIO2_GPIO_Port, GPIO2_Pin,2))
+	if(Debounce(GPIOB, GPIO2_Pin,2))
 	{
 		user_interfaceIface_raise_sET(&UIX);
 	}
-	if(Debounce(GPIO3_GPIO_Port, GPIO3_Pin,3))
+	if(Debounce(GPIOB, GPIO3_Pin,3))
 	{
 		user_interfaceIface_raise_rESET(&UIX);
 	}
 }
 
-// Service routine called every CHECK_MSEC to
-// debounce both edges
+
 uint32_t Debounce(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin,uint32_t index)
 {
 	static GPIO_PinState DebouncedKeyPress[4]={0,0,0,0};

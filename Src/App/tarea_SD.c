@@ -19,7 +19,7 @@ void fcheck(FRESULT res)
 {
 	if(res)
 	{
-		snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "ErrSD: %4d",res);
+		snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "Error SD:%2d",res);
 		tarea_OLED();
 		while(1);
 	}

@@ -60,7 +60,7 @@ void WCET(void (*ptr_funct)(void),uint32_t *wcet);
 /* Private defines -----------------------------------------------------------*/
 #define GPIO0_Pin GPIO_PIN_2
 #define GPIO0_GPIO_Port GPIOA
-#define GPIO1_Pin GPIO_PIN_4
+#define GPIO1_Pin GPIO_PIN_6
 #define GPIO1_GPIO_Port GPIOA
 #define GPIO2_Pin GPIO_PIN_10
 #define GPIO2_GPIO_Port GPIOB
