@@ -35,7 +35,7 @@ void tarea_TIMER(void)
 		Timer3=DIGITO_ON;
 	}
 	digito_on=0;
-	if(Timer3<DIGITO_ON/6)
+	if(Timer3>DIGITO_ON/6)
 		digito_on=1;
 
 	if(user_interfaceIface_israised_rESET_TIM(&UIX)){

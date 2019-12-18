@@ -54,7 +54,7 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+void WCET(void (*ptr_funct)(void),uint32_t *wcet);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -66,9 +66,9 @@ void Error_Handler(void);
 #define GPIO2_GPIO_Port GPIOB
 #define GPIO3_Pin GPIO_PIN_11
 #define GPIO3_GPIO_Port GPIOB
-#define OLED_DC_Pin GPIO_PIN_10
+#define OLED_DC_Pin GPIO_PIN_11
 #define OLED_DC_GPIO_Port GPIOA
-#define OLED_RES_Pin GPIO_PIN_11
+#define OLED_RES_Pin GPIO_PIN_12
 #define OLED_RES_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 

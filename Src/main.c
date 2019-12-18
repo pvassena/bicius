@@ -29,6 +29,8 @@
 #include "App/tarea_TIMER.h"
 #include "App/tarea_GPS.h"
 #include "App/tarea_MAIN.h"
+#include "App/tarea_GPIO.h"
+#include "App/tarea_SD.h"
 #include "App/User_interface.h"
 /* USER CODE END Includes */
 
@@ -91,6 +93,13 @@ uint32_t digito_on;
 FATFS fs;
 FIL file;
 User_interface UIX;
+
+uint32_t wcet_GPIO=0;
+uint32_t wcet_TIMER=0;
+uint32_t wcet_GPS=0;
+uint32_t wcet_MAIN=0;
+uint32_t wcet_OLED=0;
+uint32_t wcet_SD=0;
 /* USER CODE END 0 */
 
 /**
@@ -140,9 +149,8 @@ int main(void)
   DWT->CTRL |= ITM_TCR_ITMENA_Msk; // enable the counter
 
   //SD
-  if(f_mount(&fs, "", 1)) while(1);
-  if(f_open(&file, "log.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE)) while(1);
-  if(f_close(&file)) while(1);
+  fcheck(f_mount(&fs, "", 1));
+  fcheck(f_open(&file, "log.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE));
 
   //máquina de estados
   user_interface_init(&UIX);
@@ -158,12 +166,14 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  tarea_TIMER();
-	  tarea_GPS();
-	  tarea_MAIN();
-	  tarea_OLED();
+	  WCET(tarea_GPIO(), wcet_GPIO);
+	  WCET(tarea_TIMER(), wcet_TIMER);
+	  WCET(tarea_GPS(), wcet_GPS);
+	  WCET(tarea_MAIN(), wcet_MAIN);
+	  WCET(tarea_OLED(), wcet_OLED);
+	  WCET(tarea_SD(), wcet_SD);
 
-	  __WFI();
+	  //__WFI();
   }
   /* USER CODE END 3 */
 }
@@ -352,20 +362,14 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pins : GPIO0_Pin GPIO1_Pin */
   GPIO_InitStruct.Pin = GPIO0_Pin|GPIO1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : GPIO2_Pin */
-  GPIO_InitStruct.Pin = GPIO2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIO2_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : GPIO3_Pin */
-  GPIO_InitStruct.Pin = GPIO3_Pin;
+  /*Configure GPIO pins : GPIO2_Pin GPIO3_Pin */
+  GPIO_InitStruct.Pin = GPIO2_Pin|GPIO3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(GPIO3_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : OLED_DC_Pin OLED_RES_Pin */
   GPIO_InitStruct.Pin = OLED_DC_Pin|OLED_RES_Pin;
@@ -377,7 +381,17 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void WCET(void (*ptr_funct)(void),uint32_t *wcet)
+{
+	uint32_t et;
 
+	DWT->CYCCNT = 0;
+	ptr_funct();
+	et=DWT->CYCCNT;
+	if(et>*wcet){
+		*wcet=et;
+	}
+}
 /* USER CODE END 4 */
 
 /**

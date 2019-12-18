@@ -17,7 +17,7 @@ void tarea_MAIN(void)
 	switch(user_interfaceIface_get_oLED_ST(&UIX))
 	{
 	case 0:
-		snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "  Bicius   ");
+		snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "  *Bicius  ");
 		break;
 	case 1:
 		if(hours)
@@ -40,7 +40,7 @@ void tarea_MAIN(void)
 		}
 		else
 		{
-			snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "%02d:%02d:  .%02d",hours,minutes,seconds,milliseconds/10);
+			snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "%02d:%02d:  .%02d",hours,minutes,milliseconds/10);
 		}
 		break;
 	case 3:
@@ -49,7 +49,7 @@ void tarea_MAIN(void)
 		}
 		else
 		{
-			snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "%02d:  :%02d.%02d",hours,minutes,seconds,milliseconds/10);
+			snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "%02d:  :%02d.%02d",hours,seconds,milliseconds/10);
 		}
 			break;
 	case 4:
@@ -58,7 +58,7 @@ void tarea_MAIN(void)
 		}
 		else
 		{
-			snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "  :%02d:%02d.%02d",hours,minutes,seconds,milliseconds/10);
+			snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "  :%02d:%02d.%02d",minutes,seconds,milliseconds/10);
 		}
 			break;
 	default:
