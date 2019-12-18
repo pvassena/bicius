@@ -8,6 +8,7 @@
 #include "App/tarea_GPIO.h"
 #include "App/User_interface.h"
 #include "App/variables_globales.h"
+#include "App/tarea_MAIN.h"
 
 void tarea_GPIO(void)
 {
@@ -26,6 +27,10 @@ void tarea_GPIO(void)
 	if(Debounce(GPIOB, GPIO3_Pin,3))
 	{
 		user_interfaceIface_raise_rESET(&UIX);
+	}
+	if(!HAL_GPIO_ReadPin(S_HALL_GPIO_Port, S_HALL_Pin))
+	{
+		update_hall();
 	}
 }
 
@@ -60,3 +65,5 @@ uint32_t Debounce(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin,uint32_t index)
     }
     return 0;
 }
+
+

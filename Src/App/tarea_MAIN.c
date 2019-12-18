@@ -14,6 +14,7 @@ void tarea_MAIN(void)
 {
 	user_interface_runCycle(&UIX);
 
+
 	switch(user_interfaceIface_get_oLED_ST(&UIX))
 	{
 	case 0:
@@ -70,20 +71,15 @@ void tarea_MAIN(void)
 	snprintf_(OLED_DOWN_BUFFER, SIZE_OLED_DOWN_BUFFER, "%02d:%02d", clk_hours, clk_minutes);
 
 	//Left buffer
-	snprintf_(OLED_LEFT_BUFFER, SIZE_OLED_LEFT_BUFFER, "%5d", gps_satellites());
-	snprintf_(OLED_LEFT_UNITS_BUFFER, SIZE_OLED_LEFT_UNITS_BUFFER, "SATS");
+	snprintf_(OLED_LEFT_BUFFER, SIZE_OLED_LEFT_BUFFER, "%5f",distancia);
+	snprintf_(OLED_LEFT_UNITS_BUFFER, SIZE_OLED_LEFT_UNITS_BUFFER, "GOOD");
 
 	//Right buffer
-	snprintf_(OLED_RIGHT_BUFFER, SIZE_OLED_RIGHT_BUFFER, "DEBUG");
-	snprintf_(OLED_RIGHT_UNITS_BUFFER, SIZE_OLED_RIGHT_UNITS_BUFFER, "PEPE");
+	snprintf_(OLED_RIGHT_BUFFER, SIZE_OLED_RIGHT_BUFFER, "%d",HAL_GPIO_ReadPin(S_HALL_GPIO_Port, S_HALL_Pin));
+	snprintf_(OLED_RIGHT_UNITS_BUFFER, SIZE_OLED_RIGHT_UNITS_BUFFER, "HALL");
 }
 
-void imprimir_timer(void)
+void update_hall(void)
 {
-
-}
-
-void titilar_digito(void)
-{
-	snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "%02d:%02d:%02d.%02d",minutes,seconds,milliseconds/10);
+	distancia+=0.002074707788;
 }

@@ -58,6 +58,8 @@ void WCET(void (*ptr_funct)(void),uint32_t *wcet);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define S_HALL_Pin GPIO_PIN_0
+#define S_HALL_GPIO_Port GPIOA
 #define GPIO0_Pin GPIO_PIN_2
 #define GPIO0_GPIO_Port GPIOA
 #define GPIO1_Pin GPIO_PIN_6

@@ -98,6 +98,8 @@ FATFS fs;
 FIL file;
 User_interface UIX;
 
+float distancia;
+
 uint32_t wcet_GPIO=0;
 uint32_t wcet_TIMER=0;
 uint32_t wcet_GPS=0;
@@ -363,6 +365,12 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, OLED_DC_Pin|OLED_RES_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : S_HALL_Pin */
+  GPIO_InitStruct.Pin = S_HALL_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(S_HALL_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : GPIO0_Pin GPIO1_Pin */
   GPIO_InitStruct.Pin = GPIO0_Pin|GPIO1_Pin;

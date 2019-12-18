@@ -48,10 +48,8 @@ extern int hours;
 extern int clk_hours;
 extern int clk_minutes;
 
-//Variables de Reloj
-
 extern uint32_t digito_on;
-
 extern uint32_t cnt;
+extern float distancia;
 
 #endif /* VARIABLES_GLOBALES_H_ */
