@@ -32,6 +32,7 @@
 #include "App/tarea_GPIO.h"
 #include "App/tarea_SD.h"
 #include "App/User_interface.h"
+#include "printf.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -41,7 +42,14 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define WCET_TIMER	   1100
+#define WCET_GPIO	   1400
+#define WCET_MAIN	  15000
 
+#define WCET_OLED	1028000
+#define WCET_GPS	7172000
+
+#define WCET_SD		8200000
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -115,7 +123,7 @@ uint32_t wcet_SD=0;
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	uint32_t tick=0;
   /* USER CODE END 1 */
   
 
@@ -173,14 +181,38 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  WCET(tarea_GPIO, &wcet_GPIO);
-	  WCET(tarea_TIMER, &wcet_TIMER);
-	  WCET(tarea_GPS, &wcet_GPS);
-	  WCET(tarea_MAIN, &wcet_MAIN);
-	  WCET(tarea_OLED, &wcet_OLED);
-	  WCET(tarea_SD, &wcet_SD);
+//	  WCET_calc(tarea_GPIO, WCET_GPIO);
+//	  WCET_calc(tarea_TIMER, WCET_TIMER);
+//	  WCET_calc(tarea_GPS, WCET_GPS);
+//	  WCET_calc(tarea_MAIN, WCET_MAIN);
+//	  WCET_calc(tarea_OLED, WCET_OLED);
+//	  WCET_calc(tarea_SD, WCET_SD);
+//
+	  switch(tick)
+	  {
+	  case 0:
+		  WCET_calc(tarea_GPIO, WCET_GPIO);
+		  WCET_calc(tarea_TIMER, WCET_TIMER);
+		  WCET_calc(tarea_MAIN, WCET_MAIN);
 
-	  //__WFI();
+		  WCET_calc(tarea_GPS, WCET_GPS);
+		  WCET_calc(tarea_OLED, WCET_OLED);
+		  tick=1;
+		  break;
+	  case 1:
+		  WCET_calc(tarea_GPIO, WCET_GPIO);
+		  WCET_calc(tarea_TIMER, WCET_TIMER);
+		  WCET_calc(tarea_MAIN, WCET_MAIN);
+
+		  WCET_calc(tarea_SD, WCET_SD);
+		  tick=0;
+		  break;
+	  default:
+		  falla(1);
+	  }
+
+	  __WFI();
+
   }
   /* USER CODE END 3 */
 }
@@ -394,16 +426,22 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void WCET(void (*ptr_funct)(void),uint32_t *wcet)
+void WCET_calc(void (*ptr_funct)(void),uint32_t wcet)
 {
 	uint32_t et;
 
 	DWT->CYCCNT = 0;
 	ptr_funct();
 	et=DWT->CYCCNT;
-	if(et>*wcet){
-		*wcet=et;
+	if(et>wcet){
+		falla(wcet);
 	}
+}
+
+void falla(uint32_t err){
+	snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "ERROR:%5d",err);
+	tarea_OLED();
+	while(1);
 }
 /* USER CODE END 4 */
 

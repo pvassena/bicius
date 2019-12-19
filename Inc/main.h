@@ -54,7 +54,8 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-void WCET(void (*ptr_funct)(void),uint32_t *wcet);
+void WCET_calc(void (*ptr_funct)(void),uint32_t wcet);
+void falla(uint32_t wcet);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
