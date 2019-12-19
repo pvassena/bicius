@@ -29,7 +29,10 @@
 #include "App/tarea_TIMER.h"
 #include "App/tarea_GPS.h"
 #include "App/tarea_MAIN.h"
+#include "App/tarea_GPIO.h"
+#include "App/tarea_SD.h"
 #include "App/User_interface.h"
+#include "printf.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -39,7 +42,14 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define WCET_TIMER	   1100
+#define WCET_GPIO	   1400
+#define WCET_MAIN	  15000
 
+#define WCET_OLED	1028000
+#define WCET_GPS	7172000
+
+#define WCET_SD		8200000
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -88,9 +98,22 @@ int hours;
 uint32_t cnt;
 uint32_t digito_on;
 
+//Variables reloj
+int clk_hours=0;
+int clk_minutes=0;
+
 FATFS fs;
 FIL file;
 User_interface UIX;
+
+float distancia;
+
+uint32_t wcet_GPIO=0;
+uint32_t wcet_TIMER=0;
+uint32_t wcet_GPS=0;
+uint32_t wcet_MAIN=0;
+uint32_t wcet_OLED=0;
+uint32_t wcet_SD=0;
 /* USER CODE END 0 */
 
 /**
@@ -100,7 +123,7 @@ User_interface UIX;
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	uint32_t tick=0;
   /* USER CODE END 1 */
   
 
@@ -140,9 +163,8 @@ int main(void)
   DWT->CTRL |= ITM_TCR_ITMENA_Msk; // enable the counter
 
   //SD
-  if(f_mount(&fs, "", 1)) while(1);
-  if(f_open(&file, "log.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE)) while(1);
-  if(f_close(&file)) while(1);
+  fcheck(f_mount(&fs, "", 1));
+  fcheck(f_open(&file, "log.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE));
 
   //máquina de estados
   user_interface_init(&UIX);
@@ -153,17 +175,44 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   DWT->CYCCNT = 0;
+
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  tarea_TIMER();
-	  tarea_GPS();
-	  tarea_MAIN();
-	  tarea_OLED();
+//	  WCET_calc(tarea_GPIO, WCET_GPIO);
+//	  WCET_calc(tarea_TIMER, WCET_TIMER);
+//	  WCET_calc(tarea_GPS, WCET_GPS);
+//	  WCET_calc(tarea_MAIN, WCET_MAIN);
+//	  WCET_calc(tarea_OLED, WCET_OLED);
+//	  WCET_calc(tarea_SD, WCET_SD);
+//
+	  switch(tick)
+	  {
+	  case 0:
+		  WCET_calc(tarea_GPIO, WCET_GPIO);
+		  WCET_calc(tarea_TIMER, WCET_TIMER);
+		  WCET_calc(tarea_MAIN, WCET_MAIN);
+
+		  WCET_calc(tarea_GPS, WCET_GPS);
+		  WCET_calc(tarea_OLED, WCET_OLED);
+		  tick=1;
+		  break;
+	  case 1:
+		  WCET_calc(tarea_GPIO, WCET_GPIO);
+		  WCET_calc(tarea_TIMER, WCET_TIMER);
+		  WCET_calc(tarea_MAIN, WCET_MAIN);
+
+		  WCET_calc(tarea_SD, WCET_SD);
+		  tick=0;
+		  break;
+	  default:
+		  falla(1);
+	  }
 
 	  __WFI();
+
   }
   /* USER CODE END 3 */
 }
@@ -343,23 +392,57 @@ static void MX_GPIO_Init(void)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, OLED_DC_Pin|OLED_RES_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, OLED_DC_Pin|OLED_RES_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : S_HALL_Pin */
+  GPIO_InitStruct.Pin = S_HALL_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(S_HALL_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : GPIO0_Pin GPIO1_Pin */
+  GPIO_InitStruct.Pin = GPIO0_Pin|GPIO1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : GPIO2_Pin GPIO3_Pin */
+  GPIO_InitStruct.Pin = GPIO2_Pin|GPIO3_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : OLED_DC_Pin OLED_RES_Pin */
   GPIO_InitStruct.Pin = OLED_DC_Pin|OLED_RES_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 }
 
 /* USER CODE BEGIN 4 */
+void WCET_calc(void (*ptr_funct)(void),uint32_t wcet)
+{
+	uint32_t et;
 
+	DWT->CYCCNT = 0;
+	ptr_funct();
+	et=DWT->CYCCNT;
+	if(et>wcet){
+		falla(wcet);
+	}
+}
+
+void falla(uint32_t err){
+	snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "ERROR:%5d",err);
+	tarea_OLED();
+	while(1);
+}
 /* USER CODE END 4 */
 
 /**

@@ -11,5 +11,6 @@
 void tarea_MAIN(void);
 void titilar_digito(void);
 void imprimir_timer(void);
+void update_hall(void);
 
 #endif /* APP_TAREA_MAIN_H_ */

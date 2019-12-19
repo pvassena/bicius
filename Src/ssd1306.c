@@ -1,5 +1,7 @@
 #include <ssd1306.h>
 
+#define SSD1306_MIRROR_VERT
+#define SSD1306_MIRROR_HORIZ
 
 void ssd1306_Reset(void) {
 	// CS = High (not selected)

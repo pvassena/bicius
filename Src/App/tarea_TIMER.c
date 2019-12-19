@@ -7,7 +7,7 @@
 #include "App/tarea_TIMER.h"
 #include "App/variables_globales.h"
 
-#define TICK 		32//32
+#define TICK 		150//32
 #define DIGITO_ON	15
 
 extern uint32_t uwTick;
@@ -35,7 +35,7 @@ void tarea_TIMER(void)
 		Timer3=DIGITO_ON;
 	}
 	digito_on=0;
-	if(Timer3<DIGITO_ON/6)
+	if(Timer3>DIGITO_ON/6)
 		digito_on=1;
 
 	if(user_interfaceIface_israised_rESET_TIM(&UIX)){
@@ -43,6 +43,7 @@ void tarea_TIMER(void)
 		minutes=0;
 		seconds=0;
 		milliseconds=0;
+		distancia=0;
 	}
 
 	if(user_interfaceIface_israised_tIM_UP(&UIX))
@@ -143,8 +144,9 @@ void tarea_TIMER(void)
 HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
 {
   /* Configure the SysTick to have interrupt in 1ms time basis*/
-  if (HAL_SYSTICK_Config(TICK*SystemCoreClock/1000) > 0U)
-  {
+//  if (HAL_SYSTICK_Config(TICK*SystemCoreClock/1000) > 0U)
+	if (HAL_SYSTICK_Config(SystemCoreClock/(1000/TICK)) > 0U)
+	{
     return HAL_ERROR;
   }
 

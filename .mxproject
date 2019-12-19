@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=C:/Users/Pedro/STM32CubeIDE/workspace_1.0.2/Bicius/Inc
+HeaderPath=C:/Users/Pedro/Desktop/bicius/bicius/Inc
 HeaderFiles=stm32f1xx_it.h;stm32f1xx_hal_conf.h;main.h;ffconf.h;user_diskio.h;fatfs.h;
-SourcePath=C:/Users/Pedro/STM32CubeIDE/workspace_1.0.2/Bicius/Src
+SourcePath=C:/Users/Pedro/Desktop/bicius/bicius/Src
 SourceFiles=stm32f1xx_it.c;stm32f1xx_hal_msp.c;main.c;user_diskio.c;fatfs.c;
 
 [PreviousLibFiles]

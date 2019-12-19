@@ -14,10 +14,11 @@ void tarea_MAIN(void)
 {
 	user_interface_runCycle(&UIX);
 
+
 	switch(user_interfaceIface_get_oLED_ST(&UIX))
 	{
 	case 0:
-		snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "  Bicius   ");
+		snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "  *Bicius  ");
 		break;
 	case 1:
 		if(hours)
@@ -40,7 +41,7 @@ void tarea_MAIN(void)
 		}
 		else
 		{
-			snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "%02d:%02d:  .%02d",hours,minutes,seconds,milliseconds/10);
+			snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "%02d:%02d:  .%02d",hours,minutes,milliseconds/10);
 		}
 		break;
 	case 3:
@@ -49,7 +50,7 @@ void tarea_MAIN(void)
 		}
 		else
 		{
-			snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "%02d:  :%02d.%02d",hours,minutes,seconds,milliseconds/10);
+			snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "%02d:  :%02d.%02d",hours,seconds,milliseconds/10);
 		}
 			break;
 	case 4:
@@ -58,38 +59,27 @@ void tarea_MAIN(void)
 		}
 		else
 		{
-			snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "  :%02d:%02d.%02d",hours,minutes,seconds,milliseconds/10);
+			snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "  :%02d:%02d.%02d",minutes,seconds,milliseconds/10);
 		}
 			break;
 	default:
 		snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "Err YAKINDU");
 	}
 
-//	byte hour,minute;
-//
-//	//Up buffer
-//	snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "T=%02d:%02d:%03d",minutes,seconds,milliseconds);
-//
-//	//Down buffer
-//	gps_crack_datetime(NULL, NULL, NULL, &hour, &minute, NULL, NULL, NULL);
-//	snprintf_(OLED_DOWN_BUFFER, SIZE_OLED_DOWN_BUFFER, "%02d:%02d", hour, minute);
-//	//snprintf_(OLED_DOWN_BUFFER, SIZE_OLED_DOWN_BUFFER, "%d", OLED_DOWN_BUFFER[0]);
-//
-//	//Left buffer
-//	snprintf_(OLED_LEFT_BUFFER, SIZE_OLED_LEFT_BUFFER, "%5f", gps_f_speed_kmph());
-//	snprintf_(OLED_LEFT_UNITS_BUFFER, SIZE_OLED_LEFT_UNITS_BUFFER, "km/h");
-//
-//	//Right buffer
-//	snprintf_(OLED_RIGHT_BUFFER, SIZE_OLED_RIGHT_BUFFER, "DEBUG");
-//	snprintf_(OLED_RIGHT_UNITS_BUFFER, SIZE_OLED_RIGHT_UNITS_BUFFER, "PEPE");
+	//Down buffer
+	gps_crack_datetime(NULL, NULL, NULL, (unsigned char*)&clk_hours, (unsigned char*)&clk_minutes, NULL, NULL, NULL);
+	snprintf_(OLED_DOWN_BUFFER, SIZE_OLED_DOWN_BUFFER, "%02d:%02d", clk_hours, clk_minutes);
+
+	//Left buffer
+	snprintf_(OLED_LEFT_BUFFER, SIZE_OLED_LEFT_BUFFER, "%5f",distancia);
+	snprintf_(OLED_LEFT_UNITS_BUFFER, SIZE_OLED_LEFT_UNITS_BUFFER, "km  ");
+
+	//Right buffer
+	snprintf_(OLED_RIGHT_BUFFER, SIZE_OLED_RIGHT_BUFFER, "%5d",HAL_GPIO_ReadPin(S_HALL_GPIO_Port, S_HALL_Pin));
+	snprintf_(OLED_RIGHT_UNITS_BUFFER, SIZE_OLED_RIGHT_UNITS_BUFFER, "HALL");
 }
 
-void imprimir_timer(void)
+void update_hall(void)
 {
-
-}
-
-void titilar_digito(void)
-{
-	snprintf_(OLED_UP_BUFFER, SIZE_OLED_UP_BUFFER, "%02d:%02d:%02d.%02d",minutes,seconds,milliseconds/10);
+	distancia+=0.002074707788;
 }
